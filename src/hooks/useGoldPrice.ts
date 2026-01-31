@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-interface GoldPriceState {
+interface VolatilityPriceState {
   price: number | null;
   previousPrice: number | null;
   lastUpdated: Date | null;
@@ -8,8 +8,8 @@ interface GoldPriceState {
   error: string | null;
 }
 
-export function useGoldPrice() {
-  const [state, setState] = useState<GoldPriceState>({
+export function useVolatilityPrice() {
+  const [state, setState] = useState<VolatilityPriceState>({
     price: null,
     previousPrice: null,
     lastUpdated: null,
@@ -33,7 +33,7 @@ export function useGoldPrice() {
     ws.onopen = () => {
       setState(prev => ({ ...prev, status: 'connected' }));
       ws.send(JSON.stringify({
-        ticks: "frxXAUUSD",
+        ticks: "R_25",
         subscribe: 1
       }));
     };
@@ -77,7 +77,6 @@ export function useGoldPrice() {
 
     ws.onclose = () => {
       setState(prev => ({ ...prev, status: 'disconnected' }));
-      // Reconnect after 3 seconds
       reconnectTimeoutRef.current = setTimeout(() => {
         connect();
       }, 3000);

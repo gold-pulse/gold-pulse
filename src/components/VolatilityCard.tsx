@@ -1,17 +1,12 @@
-import { useGoldPrice } from '@/hooks/useGoldPrice';
-import { TrendingUp, TrendingDown, Minus, Wifi, WifiOff, RefreshCw } from 'lucide-react';
+import { useVolatilityPrice } from '@/hooks/useGoldPrice';
+import { TrendingUp, TrendingDown, Minus, Wifi, WifiOff, RefreshCw, Activity } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export function GoldPriceCard() {
-  const { price, lastUpdated, status, priceDirection, error, reconnect } = useGoldPrice();
+export function VolatilityCard() {
+  const { price, lastUpdated, status, priceDirection, error, reconnect } = useVolatilityPrice();
 
   const formatPrice = (value: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(value);
+    return value.toFixed(4);
   };
 
   const formatTime = (date: Date) => {
@@ -23,17 +18,17 @@ export function GoldPriceCard() {
   };
 
   return (
-    <div className="gold-card">
-      <div className="gold-card-inner">
+    <div className="volt-card">
+      <div className="volt-card-inner">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="gold-icon">
-              <span className="text-xl font-bold">Au</span>
+            <div className="volt-icon">
+              <Activity className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-foreground">Gold Spot</h2>
-              <p className="text-sm text-muted-foreground">XAU/USD</p>
+              <h2 className="text-lg font-semibold text-foreground">Volatility 25</h2>
+              <p className="text-sm text-muted-foreground">Synthetic Index</p>
             </div>
           </div>
           
@@ -67,7 +62,7 @@ export function GoldPriceCard() {
                   {priceDirection === 'same' && <Minus className="w-8 h-8 text-muted-foreground" />}
                 </span>
               </div>
-              <p className="text-sm text-muted-foreground mt-4">per troy ounce</p>
+              <p className="text-sm text-muted-foreground mt-4">index points</p>
             </>
           ) : (
             <div className="price-loading">
