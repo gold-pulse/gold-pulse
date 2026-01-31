@@ -8,26 +8,26 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 40 20% 97%;
-    --foreground: 30 10% 15%;
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 30 10% 15%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 30 10% 15%;
+    --popover-foreground: 220 20% 10%;
 
-    --primary: 43 96% 50%;
-    --primary-foreground: 30 10% 10%;
+    --primary: 220 90% 56%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 15% 92%;
-    --secondary-foreground: 30 10% 25%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 20% 25%;
 
-    --muted: 40 10% 94%;
-    --muted-foreground: 30 5% 45%;
+    --muted: 220 10% 94%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 43 80% 55%;
-    --accent-foreground: 30 10% 10%;
+    --accent: 260 85% 60%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -35,40 +35,41 @@ All colors MUST be HSL.
     --success: 142 70% 45%;
     --success-foreground: 0 0% 100%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 43 96% 50%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 90% 56%;
 
     --radius: 0.75rem;
 
-    /* Gold specific */
-    --gold: 43 96% 50%;
-    --gold-light: 45 100% 72%;
-    --gold-dark: 40 90% 40%;
-    --gold-glow: 43 100% 60%;
+    /* Volatility theme */
+    --volt: 220 90% 56%;
+    --volt-light: 220 100% 70%;
+    --volt-dark: 220 85% 45%;
+    --volt-glow: 220 100% 65%;
+    --volt-accent: 260 85% 60%;
   }
 
   .dark {
-    --background: 30 15% 8%;
-    --foreground: 40 20% 95%;
+    --background: 220 25% 6%;
+    --foreground: 220 20% 95%;
 
-    --card: 30 12% 12%;
-    --card-foreground: 40 20% 95%;
+    --card: 220 20% 10%;
+    --card-foreground: 220 20% 95%;
 
-    --popover: 30 12% 12%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 220 20% 95%;
 
-    --primary: 43 96% 50%;
-    --primary-foreground: 30 10% 10%;
+    --primary: 220 90% 56%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 10% 18%;
-    --secondary-foreground: 40 20% 90%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 220 20% 90%;
 
-    --muted: 30 10% 20%;
-    --muted-foreground: 40 10% 55%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 55%;
 
-    --accent: 43 80% 55%;
-    --accent-foreground: 30 10% 10%;
+    --accent: 260 85% 60%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
@@ -76,14 +77,15 @@ All colors MUST be HSL.
     --success: 142 70% 45%;
     --success-foreground: 0 0% 100%;
 
-    --border: 30 10% 20%;
-    --input: 30 10% 20%;
-    --ring: 43 96% 50%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 220 90% 56%;
     
-    --gold: 43 96% 50%;
-    --gold-light: 45 100% 72%;
-    --gold-dark: 40 90% 40%;
-    --gold-glow: 43 100% 60%;
+    --volt: 220 90% 56%;
+    --volt-light: 220 100% 70%;
+    --volt-dark: 220 85% 45%;
+    --volt-glow: 220 100% 65%;
+    --volt-accent: 260 85% 60%;
   }
 }
 
@@ -100,27 +102,28 @@ All colors MUST be HSL.
 
 /* Gold Price Card Styles */
 @layer components {
-  .gold-card {
+  .volt-card {
     @apply relative overflow-hidden;
   }
 
-  .gold-card-inner {
+  .volt-card-inner {
     @apply relative bg-card rounded-2xl p-6 shadow-xl border border-border;
     background: linear-gradient(
       135deg,
       hsl(var(--card)) 0%,
       hsl(var(--card)) 50%,
-      hsl(var(--gold) / 0.03) 100%
+      hsl(var(--volt) / 0.05) 100%
     );
   }
 
-  .gold-card::before {
+  .volt-card::before {
     content: '';
     @apply absolute inset-0 rounded-2xl;
     background: linear-gradient(
       135deg,
-      hsl(var(--gold) / 0.2) 0%,
-      transparent 50%
+      hsl(var(--volt) / 0.3) 0%,
+      hsl(var(--volt-accent) / 0.2) 50%,
+      transparent 100%
     );
     padding: 1px;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -128,11 +131,10 @@ All colors MUST be HSL.
     pointer-events: none;
   }
 
-  .gold-icon {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center;
-    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-dark)) 100%);
-    color: hsl(var(--primary-foreground));
-    box-shadow: 0 4px 14px hsl(var(--gold) / 0.4);
+  .volt-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center text-primary-foreground;
+    background: linear-gradient(135deg, hsl(var(--volt)) 0%, hsl(var(--volt-accent)) 100%);
+    box-shadow: 0 4px 14px hsl(var(--volt) / 0.4);
   }
 
   .status-badge {
@@ -144,7 +146,7 @@ All colors MUST be HSL.
   }
 
   .status-connecting {
-    @apply bg-gold/10 text-gold-dark;
+    @apply bg-primary/10 text-primary;
   }
 
   .status-error {
@@ -177,7 +179,7 @@ All colors MUST be HSL.
     background: linear-gradient(
       90deg,
       hsl(var(--muted)) 0%,
-      hsl(var(--gold) / 0.2) 50%,
+      hsl(var(--volt) / 0.2) 50%,
       hsl(var(--muted)) 100%
     );
     background-size: 200% 100%;
@@ -194,14 +196,13 @@ All colors MUST be HSL.
   }
 
   .reconnect-button {
-    @apply flex items-center px-4 py-2 rounded-lg font-medium transition-all;
-    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-dark)) 100%);
-    color: hsl(var(--primary-foreground));
-    box-shadow: 0 4px 14px hsl(var(--gold) / 0.3);
+    @apply flex items-center px-4 py-2 rounded-lg font-medium transition-all text-primary-foreground;
+    background: linear-gradient(135deg, hsl(var(--volt)) 0%, hsl(var(--volt-accent)) 100%);
+    box-shadow: 0 4px 14px hsl(var(--volt) / 0.3);
   }
 
   .reconnect-button:hover {
-    box-shadow: 0 6px 20px hsl(var(--gold) / 0.4);
+    box-shadow: 0 6px 20px hsl(var(--volt) / 0.4);
     transform: translateY(-1px);
   }
 
@@ -238,7 +239,8 @@ All colors MUST be HSL.
     transform: translate(-50%, -50%);
     background: radial-gradient(
       circle,
-      hsl(var(--gold) / 0.08) 0%,
+      hsl(var(--volt) / 0.08) 0%,
+      hsl(var(--volt-accent) / 0.04) 40%,
       transparent 70%
     );
     z-index: -1;

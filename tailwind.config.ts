@@ -51,11 +51,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          dark: "hsl(var(--gold-dark))",
-          glow: "hsl(var(--gold-glow))",
+        volt: {
+          DEFAULT: "hsl(var(--volt))",
+          light: "hsl(var(--volt-light))",
+          dark: "hsl(var(--volt-dark))",
+          glow: "hsl(var(--volt-glow))",
+          accent: "hsl(var(--volt-accent))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
