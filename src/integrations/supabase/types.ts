@@ -14,7 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          bot_enabled: boolean | null
+          created_at: string
+          daily_loss_limit: number | null
+          deriv_app_id: string | null
+          deriv_token_hash: string | null
+          id: string
+          preferred_market: Database["public"]["Enums"]["market_type"] | null
+          risk_per_trade: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          bot_enabled?: boolean | null
+          created_at?: string
+          daily_loss_limit?: number | null
+          deriv_app_id?: string | null
+          deriv_token_hash?: string | null
+          id?: string
+          preferred_market?: Database["public"]["Enums"]["market_type"] | null
+          risk_per_trade?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          bot_enabled?: boolean | null
+          created_at?: string
+          daily_loss_limit?: number | null
+          deriv_app_id?: string | null
+          deriv_token_hash?: string | null
+          id?: string
+          preferred_market?: Database["public"]["Enums"]["market_type"] | null
+          risk_per_trade?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      trade_history: {
+        Row: {
+          amount: number
+          closed_at: string | null
+          direction: string
+          entry_price: number
+          exit_price: number | null
+          id: string
+          is_bot_trade: boolean | null
+          market: Database["public"]["Enums"]["market_type"]
+          opened_at: string
+          profit_loss: number | null
+          status: string
+          symbol: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          closed_at?: string | null
+          direction: string
+          entry_price: number
+          exit_price?: number | null
+          id?: string
+          is_bot_trade?: boolean | null
+          market: Database["public"]["Enums"]["market_type"]
+          opened_at?: string
+          profit_loss?: number | null
+          status?: string
+          symbol: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          closed_at?: string | null
+          direction?: string
+          entry_price?: number
+          exit_price?: number | null
+          id?: string
+          is_bot_trade?: boolean | null
+          market?: Database["public"]["Enums"]["market_type"]
+          opened_at?: string
+          profit_loss?: number | null
+          status?: string
+          symbol?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +109,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      market_type: "volatility" | "forex"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +236,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      market_type: ["volatility", "forex"],
+    },
   },
 } as const
