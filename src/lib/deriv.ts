@@ -1,5 +1,5 @@
 // Deriv API configuration and helpers
-export const DERIV_APP_ID = '1089'; // Public demo app ID
+export const DERIV_APP_ID = '124475'; // User's app ID
 export const DERIV_WS_URL = `wss://ws.derivws.com/websockets/v3?app_id=${DERIV_APP_ID}`;
 
 // OAuth URLs
