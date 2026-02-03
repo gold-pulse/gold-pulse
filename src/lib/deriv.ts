@@ -2,7 +2,13 @@
 export const DERIV_APP_ID = '124475'; // User's app ID
 export const DERIV_WS_URL = `wss://ws.derivws.com/websockets/v3?app_id=${DERIV_APP_ID}`;
 
-// OAuth URLs
+// Get the callback URL dynamically based on current origin
+export const getDerivOAuthUrl = () => {
+  const callbackUrl = `${window.location.origin}/deriv-callback`;
+  return `https://oauth.deriv.com/oauth2/authorize?app_id=${DERIV_APP_ID}&l=en&brand=deriv&redirect_uri=${encodeURIComponent(callbackUrl)}`;
+};
+
+// Legacy OAuth URL (without redirect_uri for backwards compatibility)
 export const DERIV_OAUTH_URL = `https://oauth.deriv.com/oauth2/authorize?app_id=${DERIV_APP_ID}`;
 
 // Market symbols
